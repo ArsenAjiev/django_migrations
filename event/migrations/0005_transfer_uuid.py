@@ -6,8 +6,8 @@ from django.db import migrations
 def link_slug(apps, schema_editor):
     Product = apps.get_model('event', 'Product')
     for prod in Product.objects.all():
-        slug_new, created = Product.objects.get_or_create(uuid_id=prod.uuid_id)
-        prod.artist_link = slug_new
+        slug_n, created = Product.objects.get_or_create(uuid_id=prod.uuid_id)
+        prod.slug_new = str(slug_n)
         prod.save()
 
     # class Product(models.Model):
