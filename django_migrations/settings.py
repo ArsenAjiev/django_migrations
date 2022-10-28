@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'my_app',
     'country',
     'discography',
+    'event'
     # 'randomslugfield',
 ]
 
