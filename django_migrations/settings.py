@@ -41,7 +41,13 @@ INSTALLED_APPS = [
     'my_app',
     'country',
     'discography',
-    'event'
+    'event',
+    # 'app2',
+    'app3',
+    'change_pk',
+    'change_slug',
+    'change_field',
+    # 'prkey',
     # 'randomslugfield',
 ]
 
