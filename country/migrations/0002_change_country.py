@@ -13,7 +13,20 @@ def change_country_code(apps, schema_editor):
     new_code = code_dict.get('code')
 
     query = apps.get_model("country", "Country")
+
+    # using — псевдоним подключения к базе данных, который будет отличаться от
+    # DEFAULT_DB_ALIAS при использовании нескольких баз данных.
+
+    #  RunPython не может волшебным образом изменить соединение моделей для вас;
+    #  все методы модели, которые вы вызываете, попадут в базу данных по умолчанию,
+    #  если вы не предоставите им текущий псевдоним базы данных
+    #  (доступно из schema_editor.connection.alias , где schema_editor - второй аргумент вашей функции)
+
     db_alias = schema_editor.connection.alias
+    print(db_alias)
+    # default
+    print(type(db_alias))
+    # <class 'str'>
     for item in query.objects.using(db_alias).filter(name="France", code="fr"):
         item.name = new_name
         item.code = new_code
