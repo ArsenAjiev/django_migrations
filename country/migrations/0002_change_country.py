@@ -23,8 +23,20 @@ def change_country_code(apps, schema_editor):
     #  (доступно из schema_editor.connection.alias , где schema_editor - второй аргумент вашей функции)
 
     db_alias = schema_editor.connection.alias
+    # db_alias = 'default'
+
     print(db_alias)
     # default
+
+    # DATABASES = {
+    #     "default": {
+    #     ...............
+    #     },
+    #    'other_db': {
+    #     ................
+    #     },
+    # }
+
     print(type(db_alias))
     # <class 'str'>
     for item in query.objects.using(db_alias).filter(name="France", code="fr"):
